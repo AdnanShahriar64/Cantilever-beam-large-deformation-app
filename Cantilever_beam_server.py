@@ -179,7 +179,7 @@ def solve_beam(
 
 
 
-def postprocess(Domain, ds, Theta, M, I, Y_Range, DP=51):
+def postprocess(Domain, ds, Theta, M, I, Y_Range, DP=11):
     N = len(Domain)
 
     # centerline
@@ -553,10 +553,10 @@ def run_sim(
             Concentrated_moments=Concentrated_moments,
             Distributed_Load=float(Distributed_Load),
             Gravity=float(Gravity),
-            Number_of_divisions=1000
+            Number_of_divisions=500
         )
 
-        x, y, Px, Ph, Stress = postprocess(Domain, ds, Theta, M, I, Y_Range, DP=51)
+        x, y, Px, Ph, Stress = postprocess(Domain, ds, Theta, M, I, Y_Range, DP=11)
 
         # Plotly contour (stress field)
         fig = go.Figure()
@@ -612,4 +612,5 @@ if __name__ == "__main__":
     import os
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8050)), debug=True)
     
+
 
